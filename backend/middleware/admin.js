@@ -1,0 +1,7 @@
+// backend/middleware/admin.js
+module.exports = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    return next();
+  }
+  res.status(403).json({ error: 'Access denied. Admin privileges required.' });
+};
